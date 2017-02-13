@@ -1,1 +1,8 @@
 # Search_french_words_from_mixed_letters
+
+A basic java app that let you enter 7 letters (a-z), and return all french words of 7,6,5,4 letters that use each of the given letters at most once.
+
+It begin by loading the words of desired length in the ram (this step can be easily improved). Words are stored in objects of type MixedLetters. The class MixedLetters contains two string field, one storing the word igtself, and the second storing the word letters in sorted order. It has a redefined hashCode method that compute the hash using the second string (the one with ordered letters). The equals method is also redefined according to this string.
+Then it created a HashMap that associate a word to a List of all words using exactly the same letters at itself. To do this the program take each MixedLetters objects and check if already in the HashMap; if not it simply add it as a key and add it to the associated List as well, but if it already is into it, it add it only to the List associated with the key that is already in the HashMap (in fact both MixedLetters are not really equal but look like they are because the equals method is redefined).
+Then, when 7 letters are entered, a MixedLetters object is created with them, and the List of MixedLetters objects with same letters are taken from the HashMap.
+There are also HashMap objects for MixedLetters with few letters. After taking the list of 7 letters MixedLetters objects, MixedLetters objects of all combinations of 6 letters are created and a List is taken again from the hashMap that contains all MixedLetters of 6 letters. Similarly, we do this for 5 and 4 letters words.
